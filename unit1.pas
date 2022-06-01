@@ -133,8 +133,8 @@ begin
     10,
     10
   );
-  //SetWindowRgn(Handle, rgn, true);
-  rgnn.Handle:=rgn;
+  SetWindowRgn(Handle, rgn, true);
+  //rgnn.Handle:=rgn;
   //Form2.Parent := BCPanel1;
   //Form2.Show;
   //Form2.Align:=alClient;
