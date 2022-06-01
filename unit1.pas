@@ -6,19 +6,22 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
-  StdCtrls, ExtCtrls, BCPanel, BCButton, BCListBox, Unit2, qt5, qtwidgets,
-  QtWSForms, InterfaceBase, LCLPlatformDef, LMessages, base_window;
+  StdCtrls, ExtCtrls, BCPanel, BCButton, BCListBox, Unit2,
+  {$ifdef LCLQT5}
+  qt5, qtwidgets,
+  QtWSForms,
+  {$endif}
+  InterfaceBase, LCLPlatformDef, LMessages, base_window;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
+    BCPanel1: TBCPanel;
     Button1: TButton;
     Button2: TButton;
     Image1: TImage;
-    BCPanel1: TBCPanel;
-    Panel1: TPanel;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
@@ -56,17 +59,28 @@ implementation
 { TForm1 }
 
 procedure TForm1.FormCreate(Sender: TObject);
+{$IFDEF WINDOWS}
+var
+  Transparency: longint;
+{$endif}
 begin
   mouseHandled:=false;
 
   //QWidget_setVisible(TQtMainWindow(Self.Handle).GetContainerWidget, false);
   //TQtWidget(BCPanel1.Handle).setParent(TQtMainWindow(Self.Handle).Widget);
+  {$ifdef LCLQT5}
   QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
   QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
-  Panel1.Align:=alClient;
-  {$ifdef LCLQT5}
+
+
     Button1.Caption:= 'qt5';
   {$endif}
+  {$IFDEF WINDOWS}
+  Self.Color := clRed;
+  Transparency := Self.Color;
+  SetTranslucent(Self.Handle, Transparency, 0);
+  {$endif}
+  BCPanel1.Align:=alClient;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -96,8 +110,8 @@ end;
 
 procedure TForm1.FormResize(Sender: TObject);
 begin
-  Panel1.Height:=Height;
-  Panel1.Width:=Width;
+  //Panel1.Height:=Height;
+  //Panel1.Width:=Width;
 
 end;
 

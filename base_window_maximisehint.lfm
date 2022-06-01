@@ -1,20 +1,19 @@
 object frMaximiseHint: TfrMaximiseHint
-  Left = 474
-  Height = 513
-  Top = 250
-  Width = 1112
+  Left = -9
+  Height = 560
+  Top = -9
+  Width = 1130
   BorderStyle = bsNone
   Caption = 'frMaximiseHint'
-  ClientHeight = 513
-  ClientWidth = 1112
+  ClientHeight = 772
+  ClientWidth = 1595
   DesignTimePPI = 120
   OnCreate = FormCreate
-  WindowState = wsMaximized
   object BCPanel1: TBCPanel
     Left = 0
-    Height = 513
+    Height = 772
     Top = 0
-    Width = 1112
+    Width = 1595
     Align = alClient
     Background.Color = clForm
     Background.ColorOpacity = 200

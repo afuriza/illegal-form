@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="96"
+   height="96"
+   viewBox="0 0 25.399999 25.400001"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="restore-ico.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="3.9710673"
+     inkscape:cx="106.14275"
+     inkscape:cy="44.824222"
+     inkscape:window-width="1920"
+     inkscape:window-height="1013"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4803">
+      <g
+         id="g4811">
+        <rect
+           style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.535875;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect4805"
+           width="21.262043"
+           height="3.0328255"
+           x="54.633598"
+           y="1.089842"
+           transform="rotate(45)" />
+        <rect
+           style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:0.497017;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect4807"
+           width="19.720341"
+           height="2.812917"
+           x="55.35527"
+           y="-4.6670809"
+           transform="rotate(45)" />
+        <rect
+           style="fill:#4d4d4d;fill-opacity:1;stroke:none;stroke-width:1.10648;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect4809"
+           width="43.902031"
+           height="6.2622013"
+           x="44.776691"
+           y="6.9120617"
+           transform="rotate(45)" />
+      </g>
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g5013">
+      <path
+         id="path3674"
+         clip-path="none"
+         style="color:#000000;fill:#808080;stroke-width:4.76557;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none"
+         d="M 48 0 C 24.634315 0 5.1264544 16.76939 0.8671875 38.908203 L 7.1796875 38.908203 C 11.320882 20.168846 27.998269 6.1894531 48 6.1894531 C 68.001714 6.1894531 84.671257 20.168846 88.810547 38.908203 L 95.132812 38.908203 C 90.873571 16.76939 71.365647 -5.0170152e-14 48 0 z "
+         transform="scale(0.26458333)" />
+      <path
+         style="color:#000000;fill:#666666;stroke-width:1.26089;stroke-dasharray:1.21253, 2.42505;-inkscape-stroke:none"
+         d="m 1.1032114,11.740219 v 1.211636 H 2.314849 v -1.211636 z m 3.6373743,0 v 1.211636 h 1.2116377 v -1.211636 z m 3.6373743,0 v 1.211636 h 1.2116365 v -1.211636 z m 3.637373,0 v 1.211636 h 1.211638 v -1.211636 z m 3.637374,0 v 1.211636 h 1.211637 v -1.211636 z m 3.637375,0 v 1.211636 h 1.214099 v -1.211636 z m 3.637373,0 v 1.211636 h 1.2141 v -1.211636 z"
+         id="path4314" />
+      <path
+         id="path5004"
+         clip-path="none"
+         style="color:#000000;fill:#808080;stroke-width:4.76557;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none"
+         d="M 0.64453125 55.841797 C 4.3975679 78.595968 24.196788 96 48 96 C 71.803174 96 91.602455 78.595968 95.355469 55.841797 L 89.066406 55.841797 C 85.406657 75.204359 68.44393 89.800781 48 89.800781 C 27.555979 89.800781 10.585202 75.204464 6.9238281 55.841797 L 0.64453125 55.841797 z "
+         transform="scale(0.26458333)" />
+    </g>
+  </g>
+</svg>

@@ -10,17 +10,42 @@ uses
   {$ifdef LCLQT5}
   qt5, qtwidgets, QtWSForms,
   {$endif}
-  LMessages,
-  LCLIntf, LCLType, DateUtils, base_window_maximisehint, BGRABitmap, BCTypes,
-  BCMaterialDesignButton, BGRASVGImageList, BGRABitmapTypes, Unit2;
+  {$IFDEF WINDOWS}
+  windows,
+  {$endif}
+  LMessages, LCLIntf, LCLType, DateUtils, base_window_maximisehint, BGRABitmap,
+  BCTypes, BCMaterialDesignButton, BGRASVGImageList, uPSI_BGRAPascalScript,
+  BGRABitmapTypes, Unit2;
+
+{$IFDEF WINDOWS}
+{Function SetLayeredWindowAttributes Lib "user32" (ByVal hWnd As Long, ByVal Color As Long, ByVal X As Byte, ByVal alpha As Long) As Boolean }
+function SetLayeredWindowAttributes(hWnd: longint; Color: longint;
+  X: byte; alpha: longint): bool stdcall; external 'USER32';
+
+{not sure how to alias these functions here ????   alias setwindowlonga!!}
+{Function SetWindowLong Lib "user32" Alias "SetWindowLongA" (ByVal hWnd As Long, ByVal nIndex As Long, ByVal dwNewLong As Long) As Long }
+function SetWindowLongA(hWnd: longint; nIndex: longint;
+  dwNewLong: longint): longint stdcall; external 'USER32';
+
+{Function GetWindowLong Lib "user32" Alias "GetWindowLongA" (ByVal hWnd As Long, ByVal nIndex As Long) As Long }
+function GetWindowLongA(hWnd: longint; nIndex: longint): longint stdcall;
+  external 'user32';
+
+procedure SetTranslucent(ThehWnd: longint; Color: longint; nTrans: integer);
+
+{$endif}
+
 
 type
 
   { TfrBaseWindow }
 
   TfrBaseWindow = class(TForm)
-    BGRASVGImageList1: TBGRASVGImageList;
-    Image1: TImage;
+    imgMaximize: TImage;
+    imgClose: TImage;
+    imgList: TImageList;
+    svgList: TBGRASVGImageList;
+    imgMinimize: TImage;
     imgTitleBar: TImage;
     lbTitlebar: TLabel;
     pnDrag: TPanel;
@@ -36,6 +61,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
+    procedure imgMinimizePaint(Sender: TObject);
     procedure imgTitleBarResize(Sender: TObject);
     procedure pnContainerDblClick(Sender: TObject);
     procedure pnContainerMouseDown(Sender: TObject; Button: TMouseButton;
@@ -76,12 +102,32 @@ type
     procedure setFillWindow;
   end;
 
+const
+  LWA_COLORKEY = 1;
+  LWA_ALPHA = 2;
+  LWA_BOTH = 3;
+  WS_EX_LAYERED = $80000;
+  GWL_EXSTYLE = -20;
+
 var
   frBaseWindow: TfrBaseWindow;
 
 implementation
 
 {$R *.lfm}
+
+{$IFDEF WINDOWS}
+procedure SetTranslucent(ThehWnd: longint; Color: longint; nTrans: integer);
+var
+  Attrib: longint;
+begin
+  {SetWindowLong and SetLayeredWindowAttributes are API functions, see MSDN for details }
+  Attrib := GetWindowLongA(ThehWnd, GWL_EXSTYLE);
+  SetWindowLongA(ThehWnd, GWL_EXSTYLE, attrib or WS_EX_LAYERED);
+  {anything with color value color will completely disappear if flag = 1 or flag = 3  }
+  SetLayeredWindowAttributes(ThehWnd, Color, nTrans, 1);
+end;
+{$ENDIF}
 
 { TfrBaseWindow }
 
@@ -111,14 +157,29 @@ begin
 end;
 
 procedure TfrBaseWindow.FormCreate(Sender: TObject);
+{$IFDEF WINDOWS}
+var
+  Transparency: longint;
+{$endif}
 begin
   fillWindow:=true;
+
+  svgList.PopulateImageList(imgList, [imgMinimize.Height]);
+  imgList.GetBitmap(0, imgClose.Picture.Bitmap);
+
+  imgList.GetBitmap(1, imgMaximize.Picture.Bitmap);
+  imgList.GetBitmap(3, imgMinimize.Picture.Bitmap);
 
 
   {$ifdef LCLQT5}
   //QT5 Translucent Window
   QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
   QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
+  {$endif}
+  {$IFDEF WINDOWS}
+  Self.Color := clRed;
+  Transparency := Self.Color;
+  SetTranslucent(Self.Handle, Transparency, 0);
   {$endif}
 end;
 
@@ -191,6 +252,11 @@ begin
 end;
 
 procedure TfrBaseWindow.FormWindowStateChange(Sender: TObject);
+begin
+
+end;
+
+procedure TfrBaseWindow.imgMinimizePaint(Sender: TObject);
 begin
 
 end;

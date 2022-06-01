@@ -6,7 +6,11 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  BCPanel, qt5, qtwidgets;
+  {$ifdef LCLQT5}
+  qt5, qtwidgets,
+  {$endif}
+  BCPanel
+  ;
 
 type
 
@@ -25,15 +29,29 @@ var
   frMaximiseHint: TfrMaximiseHint;
 
 implementation
+uses
+  base_window;
 
 {$R *.lfm}
 
 { TfrMaximiseHint }
 
 procedure TfrMaximiseHint.FormCreate(Sender: TObject);
+{$IFDEF WINDOWS}
+var
+  Transparency: longint;
+{$endif}
 begin
+  {$ifdef LCLQT5}
   QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
   QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
+  {$endif}
+  {$IFDEF WINDOWS}
+  Self.Color := clRed;
+  Transparency := Self.Color;
+  SetTranslucent(Self.Handle, Transparency, 0);
+  {$endif}
+  WindowState := wsMaximized;
 end;
 
 end.
