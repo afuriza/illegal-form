@@ -152,9 +152,18 @@ begin
     prevWidth:=Width;
     prevTop:=Top;
     prevLeft:=Left;
+
+    {$ifdef Windows}
     WindowState:=wsMaximized;
+    {$endif}
     Width:=Screen.WorkAreaWidth;
     Height:=Screen.WorkAreaHeight;
+    Top := 0;
+    Left := 0;
+    {$ifdef LCLQT5}
+    WindowState:=wsMaximized;
+    {$endif}
+
 
     prevState:=wsMaximized;
   end;
@@ -222,13 +231,18 @@ begin
     and (not handleSize) then
   begin
     WindowState:=wsMaximized;
-    Height := Screen.WorkAreaHeight;
-    Width := Screen.WorkAreaWidth;
+    setClientWindowRect;
+    {$ifdef windows}
+    Width:=Screen.WorkAreaWidth;
+    Height:=Screen.WorkAreaHeight;
+    {$endif}
   end
   else if (prevState = wsMaximized) and (not handlePos) then
   begin
-    Height := Screen.WorkAreaHeight;
-    Width := Screen.WorkAreaWidth;
+    {$ifdef windows}
+    Width:=Screen.WorkAreaWidth;
+    Height:=Screen.WorkAreaHeight;
+    {$endif} ;
   end;
 end;
 
@@ -278,14 +292,19 @@ begin
   if (WindowState <> wsMaximized) and (prevState = wsMaximized) and (not handlePos)
     and (not handleSize) then
   begin
+
+    {$ifdef windows}
     WindowState:=wsMaximized;
-    Height := Screen.WorkAreaHeight;
-    Width := Screen.WorkAreaWidth;
+    Width:=Screen.WorkAreaWidth;
+    Height:=Screen.WorkAreaHeight;
+    {$endif}
   end
   else if (prevState = wsMaximized) and (not handlePos) then
   begin
-    Height := Screen.WorkAreaHeight;
-    Width := Screen.WorkAreaWidth;
+    {$ifdef windows}
+    Width:=Screen.WorkAreaWidth;
+    Height:=Screen.WorkAreaHeight;
+    {$endif}
   end;
 end;
 
