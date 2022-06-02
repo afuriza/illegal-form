@@ -56,6 +56,7 @@ type
     procedure btCloseWindowClick(Sender: TObject);
     procedure btMaximiseWindowClick(Sender: TObject);
     procedure btMinimizeWindowClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer);
     procedure FormResize(Sender: TObject);
@@ -94,6 +95,7 @@ type
     prevWidth: integer;
     prevTop: integer;
     prevLeft: integer;
+    prevState: TWindowState;
     procedure setBaseWindowState;
     procedure setClientWindowRect;
     procedure paintPnDrag;
@@ -141,8 +143,9 @@ begin
     Top:=prevTop;
     Left:=prevLeft;
     pnBackground.BorderSpacing.Around:=5;
+    prevState:=wsMaximized;
   end
-  else
+  else if WindowState = wsNormal then
   begin
     pnBackground.BorderSpacing.Around:=0;
     prevHeight:=Height;
@@ -152,6 +155,7 @@ begin
     Width:=Screen.WorkAreaWidth;
     Height:=Screen.WorkAreaHeight;
     WindowState:=wsMaximized;
+    prevState:=wsMaximized;
   end;
 
 end;
@@ -163,7 +167,8 @@ var
 {$endif}
 begin
   fillWindow:=true;
-
+  prevHeight:=0;
+  prevWidth:=0;
   svgList.PopulateImageList(imgList, [imgMinimize.Height]);
   imgList.GetBitmap(0, imgClose.Picture.Bitmap);
 
@@ -207,6 +212,13 @@ end;
 procedure TfrBaseWindow.btMinimizeWindowClick(Sender: TObject);
 begin
   WindowState:=wsMinimized;
+  paintPnDrag;
+end;
+
+procedure TfrBaseWindow.FormActivate(Sender: TObject);
+begin
+  if (prevState = wsMaximized) and (not handlePos) and (not handleSize) then
+    WindowState:=wsMaximized;
 end;
 
 procedure TfrBaseWindow.setFillWindow;
@@ -220,8 +232,8 @@ begin
       pnTitleBar.Align:=alNone;
       pnTitleBar.Anchors:=[akLeft, akTop, akRight];
       pnTitleBar.BringToFront;
-      imgTitleBar.Visible:=false;
-      lbTitlebar.Visible:=false;
+      //imgTitleBar.Visible:=false;
+      //lbTitlebar.Visible:=false;
     end
     else
     begin
@@ -449,7 +461,7 @@ begin
     newWidth := prevWidth + (Mouse.CursorPos.X - mouseX);
   end;
 
-  if (newHeight > 30) and (newWidth > 50) then
+  if (newHeight > 150) and (newWidth > 200) then
   begin
     Top := newTop;
     Left := newLeft;
@@ -537,6 +549,7 @@ begin
   handleWidthLeft:=false;
   handleWidthRight:=false;
   setClientWindowRect;
+  pnDrag.Invalidate;
 end;
 
 procedure TfrBaseWindow.setClientWindowRect;

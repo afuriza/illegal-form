@@ -8,6 +8,7 @@ object frBaseWindow: TfrBaseWindow
   ClientHeight = 425
   ClientWidth = 951
   DesignTimePPI = 120
+  OnActivate = FormActivate
   OnCreate = FormCreate
   OnMouseMove = FormMouseMove
   OnResize = FormResize
@@ -4287,7 +4288,7 @@ object frBaseWindow: TfrBaseWindow
             Left = 34
             Height = 32
             Top = 0
-            Width = 813
+            Width = 783
             Align = alClient
             Alignment = taCenter
             Caption = 'Untitled'
@@ -4300,36 +4301,40 @@ object frBaseWindow: TfrBaseWindow
             OnMouseUp = pnContainerMouseUp
           end
           object pnControlWindow: TPanel
-            Left = 847
+            Left = 817
             Height = 32
             Top = 0
-            Width = 94
+            Width = 124
             Align = alRight
             AutoSize = True
             BevelOuter = bvNone
             ClientHeight = 32
-            ClientWidth = 94
+            ClientWidth = 124
             TabOrder = 0
             OnResize = pnControlWindowResize
             object imgMinimize: TImage
-              Left = 7
+              Left = 12
               Height = 18
               Top = 7
               Width = 22
               Align = alRight
               AutoSize = True
+              BorderSpacing.Left = 5
+              BorderSpacing.Right = 5
               BorderSpacing.Around = 7
               OnClick = btMinimizeWindowClick
               Proportional = True
               Transparent = True
             end
             object imgMaximize: TImage
-              Left = 36
+              Left = 51
               Height = 18
               Top = 7
               Width = 22
               Align = alRight
               AutoSize = True
+              BorderSpacing.Left = 10
+              BorderSpacing.Right = 5
               BorderSpacing.Around = 7
               OnClick = btMaximiseWindowClick
               OnPaint = imgMinimizePaint
@@ -4337,12 +4342,14 @@ object frBaseWindow: TfrBaseWindow
               Transparent = True
             end
             object imgClose: TImage
-              Left = 65
+              Left = 90
               Height = 18
               Top = 7
               Width = 22
               Align = alRight
               AutoSize = True
+              BorderSpacing.Left = 10
+              BorderSpacing.Right = 5
               BorderSpacing.Around = 7
               OnClick = btCloseWindowClick
               OnPaint = imgMinimizePaint
