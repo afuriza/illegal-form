@@ -143,7 +143,7 @@ begin
     Top:=prevTop;
     Left:=prevLeft;
     pnBackground.BorderSpacing.Around:=5;
-    prevState:=wsMaximized;
+    prevState:=wsNormal;
   end
   else if WindowState = wsNormal then
   begin
@@ -152,9 +152,10 @@ begin
     prevWidth:=Width;
     prevTop:=Top;
     prevLeft:=Left;
+    WindowState:=wsMaximized;
     Width:=Screen.WorkAreaWidth;
     Height:=Screen.WorkAreaHeight;
-    WindowState:=wsMaximized;
+
     prevState:=wsMaximized;
   end;
 
@@ -217,8 +218,18 @@ end;
 
 procedure TfrBaseWindow.FormActivate(Sender: TObject);
 begin
-  if (prevState = wsMaximized) and (not handlePos) and (not handleSize) then
+  if (WindowState <> wsMaximized) and (prevState = wsMaximized) and (not handlePos)
+    and (not handleSize) then
+  begin
     WindowState:=wsMaximized;
+    Height := Screen.WorkAreaHeight;
+    Width := Screen.WorkAreaWidth;
+  end
+  else if (prevState = wsMaximized) and (not handlePos) then
+  begin
+    Height := Screen.WorkAreaHeight;
+    Width := Screen.WorkAreaWidth;
+  end;
 end;
 
 procedure TfrBaseWindow.setFillWindow;
@@ -228,8 +239,9 @@ begin
     if fillWindow then
     begin
       pnTitleBar.Parent := embeddedForm;
-      pnTitleBar.Align:=alTop;
-      pnTitleBar.Align:=alNone;
+      //pnTitleBar.Align:=alTop;
+      //pnTitleBar.Align:=alNone;
+      pnTitleBar.Width := embeddedForm.Width;
       pnTitleBar.Anchors:=[akLeft, akTop, akRight];
       pnTitleBar.BringToFront;
       //imgTitleBar.Visible:=false;
@@ -261,6 +273,19 @@ begin
     embeddedForm.Show;
     embeddedForm.BorderSpacing.Around:=1;
     setFillWindow;
+  end;
+
+  if (WindowState <> wsMaximized) and (prevState = wsMaximized) and (not handlePos)
+    and (not handleSize) then
+  begin
+    WindowState:=wsMaximized;
+    Height := Screen.WorkAreaHeight;
+    Width := Screen.WorkAreaWidth;
+  end
+  else if (prevState = wsMaximized) and (not handlePos) then
+  begin
+    Height := Screen.WorkAreaHeight;
+    Width := Screen.WorkAreaWidth;
   end;
 end;
 
@@ -312,6 +337,8 @@ begin
       if (Mouse.CursorPos.Y <= 25) and (Top <= 1) then
       begin
         frMaximiseHint.Show;
+        frMaximiseHint.Width:=Screen.WorkAreaWidth;
+        frMaximiseHint.Height:=Screen.WorkAreaHeight;
         BringToFront;
       end
       else

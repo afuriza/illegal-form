@@ -19,6 +19,7 @@ type
   TfrMaximiseHint = class(TForm)
     BCPanel1: TBCPanel;
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
 
   public
@@ -52,6 +53,12 @@ begin
   SetTranslucent(Self.Handle, Transparency, 0);
   {$endif}
   WindowState := wsMaximized;
+
+end;
+
+procedure TfrMaximiseHint.FormShow(Sender: TObject);
+begin
+
 end;
 
 end.

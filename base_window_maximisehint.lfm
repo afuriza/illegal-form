@@ -5,10 +5,12 @@ object frMaximiseHint: TfrMaximiseHint
   Width = 1130
   BorderStyle = bsNone
   Caption = 'frMaximiseHint'
-  ClientHeight = 772
-  ClientWidth = 1595
+  ClientHeight = 560
+  ClientWidth = 1130
   DesignTimePPI = 120
   OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '2.2.3.0'
   object BCPanel1: TBCPanel
     Left = 0
     Height = 772
