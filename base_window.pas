@@ -240,6 +240,7 @@ begin
   if Assigned(embeddedForm) then
   begin
     OnClose:=embeddedForm.OnClose;
+    imgTitleBar.Picture.Icon := embeddedForm.Icon;
     OnWindowStateChange := embeddedForm.OnWindowStateChange;
     embeddedForm.Parent:=pnContainer;
     embeddedForm.BorderStyle:=bsNone;
