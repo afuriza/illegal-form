@@ -17,6 +17,9 @@ type
     Label1: TLabel;
     Label2: TLabel;
     MyProperty1: TBCButton;
+    MyProperty2: TBCButton;
+    MyProperty3: TBCButton;
+    MyProperty4: TBCButton;
     MySampleButton: TBCButton;
     Panel1: TPanel;
     procedure BCPanel1Resize(Sender: TObject);
