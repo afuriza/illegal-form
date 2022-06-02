@@ -45,8 +45,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="228"/>
-        <CursorPos X="25" Y="234"/>
+        <TopLine Value="277"/>
+        <CursorPos X="3" Y="277"/>
         <UsageCount Value="77"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -229,7 +229,7 @@
         <UsageCount Value="11"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
+    <JumpHistory HistoryIndex="27">
       <Position>
         <Filename Value="base_window.pas"/>
         <Caret Line="164" Column="31" TopLine="164"/>
@@ -308,10 +308,6 @@
       </Position>
       <Position>
         <Filename Value="base_window.pas"/>
-        <Caret Line="159" Column="14" TopLine="211"/>
-      </Position>
-      <Position>
-        <Filename Value="base_window.pas"/>
         <Caret Line="223" Column="3" TopLine="149"/>
       </Position>
       <Position>
@@ -320,23 +316,19 @@
       </Position>
       <Position>
         <Filename Value="base_window.pas"/>
-        <Caret Line="156" Column="20" TopLine="200"/>
-      </Position>
-      <Position>
-        <Filename Value="base_window.pas"/>
-        <Caret Line="152" Column="39" TopLine="202"/>
-      </Position>
-      <Position>
-        <Filename Value="base_window.pas"/>
         <Caret Line="214" Column="3" TopLine="202"/>
       </Position>
       <Position>
         <Filename Value="base_window.pas"/>
-        <Caret Line="150" Column="5" TopLine="172"/>
+        <Caret Line="209" Column="3" TopLine="207"/>
       </Position>
       <Position>
         <Filename Value="base_window.pas"/>
-        <Caret Line="209" Column="3" TopLine="207"/>
+        <Caret Line="234" Column="25" TopLine="228"/>
+      </Position>
+      <Position>
+        <Filename Value="base_window.pas"/>
+        <Caret Line="230" Column="3" TopLine="228"/>
       </Position>
       <Position>
         <Filename Value="unit2.pas"/>
